@@ -1,5 +1,6 @@
 package android.jplas.karyaseni;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,11 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_PICTURE = 1002;
     Button btnKamera, btnLogout;
+    GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnKamera = findViewById(R.id.btnKamera);
         btnLogout = findViewById(R.id.btnLogout);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
 
         btnKamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                finish();
+                signOut();
 
             }
         });
@@ -65,6 +75,16 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtras(extras);
             startActivity(intent);
         }
+    }
+    private void signOut(){
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });
     }
 
 }
