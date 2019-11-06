@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "816718660345",
+    "firebase_url": "https://karyaseni-e5121.firebaseio.com",
+    "project_id": "karyaseni-e5121",
+    "storage_bucket": "karyaseni-e5121.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816718660345:android:908f398fb78c817a675828",
+        "android_client_info": {
+          "package_name": "android.jplas.karyaseni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816718660345-qdb8cjs8v9mn03mm1omjgect6ua74r29.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.jplas.karyaseni",
+            "certificate_hash": "ac36022941374a388921009538a05fb8853d3f6f"
+          }
+        },
+        {
+          "client_id": "816718660345-2qvpdi70pcb9kk48il59ti6574grtk9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuKbmIZx1Qy5LQKJlkO15TcsLTqnmKk-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "816718660345-2qvpdi70pcb9kk48il59ti6574grtk9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
